@@ -1,0 +1,12 @@
+#!/bin/bash
+
+error() { echo -e "$1" && exit; }
+
+[ $EUID -eq 0 ] && error "Do not run this script as root."
+
+
+isPlugged(){
+    grep -A4 -ri 'Headphone Playback Switch' /proc/asound/card*/* | grep "Amp-Out vals.*0x00 0x00" -q
+}
+
+isPlugged && echo 'isPluggedIn' || echo 'isPluggedOut'
