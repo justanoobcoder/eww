@@ -2,6 +2,22 @@
   (box :class "module-2" :vexpand "false" :hexpand "false"
     (label :class "separ" :text "|")))
 
+;; Internet widget
+(defpoll COL_WLAN :interval "5s" "./scripts/internet --COL")
+(defpoll ESSID_WLAN :interval "5s" "./scripts/internet --ESSID")
+(defpoll WLAN_ICON :interval "5s" "./scripts/internet --ICON")
+(defwidget internet [] 
+  (box :class "internet_class" :vexpand "false" :hexpand "false" :space-evenly "false"
+    (button
+      :tooltip "${ESSID_WLAN}"
+      :wrap "false" 
+      :limit-width 12 
+      :style "color: ${COL_WLAN};" WLAN_ICON
+    )
+  )
+)
+
+;; Clock widget
 (defpoll clock_time :interval "1s" "date +\%H:%M")
 (defpoll clock_date :interval "10h" "date '+%a, %d/%m'")
 (defvar date_rev false)
@@ -20,7 +36,7 @@
   )
 )
 
-;; Calendar Widgets ;;
+;; Calendar widget
 (defpoll calendar_day :interval "10h" "date '+%d'")
 (defpoll calendar_month :interval "10h" "scripts/getmonth")
 (defpoll calendar_year :interval "10h" "date '+%Y'")
@@ -36,6 +52,7 @@
   )
 )
 
+;; Calendar window
 (defwindow calendar 
   :class "calendar_class"
   :monitor 0
@@ -48,6 +65,7 @@
   (cal)
 )
 
+;; Battery widget
 (defwidget bat []
   (box 
     :class {EWW_BATTERY.BAT0.status == "Charging" ? "batcolor-charging" :
@@ -72,6 +90,7 @@
         EWW_BATTERY.BAT0.capacity < 80 ? "" :
         ""}))))
 
+;; Memory widget
 (defwidget mem []
   (box :class "mem_class" :vexpand "false" :hexpand "false" 
     (circular-progress :class "membar"
@@ -85,6 +104,7 @@
         :wrap false
         ""))))
 
+;; CPU widget
 (defwidget cpu []
   (box :class "cpu_class" :vexpand "false" :hexpand "false" 
     (circular-progress :class "cpubar"
@@ -98,6 +118,7 @@
         :wrap false
         ""))))
 
+;; Volume widget
 (defpoll volume_percent :interval "2s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
 (defpoll plug_status :interval "2s" "./scripts/plug_status")
 (defvar vol_reveal false)
@@ -138,9 +159,12 @@
     (bat)
     (sep)
     (clock)
+    (sep)
+    (internet)
   )
 )
 
+;; Workspace widget
 (deflisten workspaces_listen :initial "" `./scripts/workspaces`)
 (defwidget workspaces []
   (literal :content workspaces_listen))
