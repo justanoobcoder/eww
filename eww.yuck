@@ -57,8 +57,8 @@
   :class "calendar_class"
   :monitor 0
   :geometry (geometry
-    :x "10px"
-    :y "10px"
+    :x "-10px"
+    :y "50px"
     :width "250px"
     :height "60px"
     :anchor "top right")
@@ -196,6 +196,9 @@
     :width "99%"
     :height "30px"
     :anchor "top center")
-  :exclusive true
+  :stacking "fg"
+  :reserve (struts :distance "50px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
   (mainbar)
 )
