@@ -5,27 +5,26 @@ import subprocess
 ws = {
         1: "一",
         2: "二",
-        3: "三",
-        4: "四",
-        5: "五",
-        6: "六",
-        7: "七",
-        8: "八",
-        9: "九",
+        4: "三",
+        8: "四",
+        16: "五",
+        32: "六",
+        64: "七",
+        128: "八",
+        256: "九",
     }
 
-aw = subprocess.check_output("hyprctl monitors | grep active | sed 's/()/(1)/g' | sort | awk 'NR>1{print $1}' RS='(' FS=')'", shell=True).decode('utf-8').rstrip('\n')
-
-ew = subprocess.check_output("hyprctl workspaces | grep ID | sed 's/()/(1)/g' | sort | awk 'NR>1{print $1}' RS='(' FS=')'", shell=True).decode('utf-8').replace('\n', '')
-ew = list(ew)
+et = [1, 2, 4, 8, 16, 32, 64, 128, 256]
+ct = int(subprocess.check_output("./scripts/dwm-dump-all | grep current | head -n 1 | awk -F' ' '{print $2}'", 
+                                shell=True).decode('utf-8').rstrip('\n'))
 
 box = '(box :class "workspace_class" :orientation "h" :spacing 5 :space-evenly "true" '
 
-for i in ew:
-    if i == aw:
-        btn = '(button :class "active" :onclick "hyprctl dispatch workspace ' + i + '" "' + ws[int(i)] + '")'
+for i in et:
+    if i == ct:
+        btn = '(button :class "active" :onclick "dwm-msg run_command view ' + str(i) + '" "' + ws[i] + '")'
     else:
-        btn = '(button :class "inactive" :onclick "hyprctl dispatch workspace ' + i + '" "' + ws[int(i)] + '")'
+        btn = '(button :class "inactive" :onclick "dwm-msg run_command view ' + str(i) + '" "' + ws[i] + '")'
     box += btn
 
 box += ')'

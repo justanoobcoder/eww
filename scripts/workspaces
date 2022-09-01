@@ -3,6 +3,6 @@ workspaces() {
     ./scripts/workspaces.py
 }
 workspaces
-tail -f /tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/hyprland.log | grep --line-buffered "Changed to workspace" | while read -r; do 
+tail -f /tmp/dwm.log | grep --line-buffered "tag_change_event" | while read -r; do 
 workspaces
 done
