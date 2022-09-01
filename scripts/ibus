@@ -1,0 +1,13 @@
+#!/bin/bash
+
+engine=`ibus engine`
+
+if [[ "${1}" == "engine" ]]; then
+    echo "${engine}"
+elif [[ "${1}" == "icon" ]]; then
+    if [[ "${engine}" == "Bamboo" ]]; then
+        echo ""
+    elif [[ "${engine}" == "xkb:us::eng" ]]; then
+        echo ""
+    fi
+fi
