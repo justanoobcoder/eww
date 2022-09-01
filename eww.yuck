@@ -2,6 +2,20 @@
   (box :class "module-2" :vexpand "false" :hexpand "false"
     (label :class "separ" :text "|")))
 
+;; Ibus widget
+(defpoll IBUS_ENGINE :interval "1s" "./scripts/ibus engine")
+(defpoll IBUS_ICON :interval "1s" "./scripts/ibus icon")
+(defwidget ibus []
+  (box :class "ibus_class"
+    (button
+      :tooltip "${IBUS_ENGINE}"
+      :style "color: ${IBUS_ENGINE == "Bamboo" ? "#F7768E" : "#7AA2F7"};"
+      :onclick "./scripts/ibus"
+      IBUS_ICON
+    )
+  )
+)
+
 ;; Internet widget
 (defpoll COL_WLAN :interval "5s" "./scripts/internet --COL")
 (defpoll ESSID_WLAN :interval "5s" "./scripts/internet --ESSID")
@@ -126,7 +140,7 @@
 (defwidget volume []
   (eventbox :onhover "eww update vol_reveal=true"
             :onhoverlost "eww update vol_reveal=false"
-  (box :space-evenly "false" :orientation "h" :spacing "3" 
+  (box :class "volume_class" :space-evenly "false" :orientation "h" :spacing "3" 
     (label :text {volume-muted ? "" :
                   plug_status == "isPluggedIn" ? "" :
                   volume_percent == 0 ? "" :
@@ -152,15 +166,17 @@
     :orientation "h" 
     :halign "end"
     :space-evenly false  
-    (volume)
     (sep)
     (cpu)
     (mem)
     (bat)
     (sep)
+    (volume)
+    (sep)
     (clock)
     (sep)
     (internet)
+    (ibus)
   )
 )
 
@@ -193,7 +209,7 @@
   :geometry (geometry
     :x "0%"
     :y "5px"
-    :width "99%"
+    :width "98%"
     :height "30px"
     :anchor "top center")
   :stacking "fg"

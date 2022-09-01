@@ -2,7 +2,13 @@
 
 engine=`ibus engine`
 
-if [[ "${1}" == "engine" ]]; then
+if [[ -z "${1}" ]]; then
+    if [[ "${engine}" == "xkb:us::eng" ]]; then
+        ibus engine Bamboo
+    elif [[ "${engine}" == "Bamboo" ]]; then
+        ibus engine xkb:us::eng
+    fi
+elif [[ "${1}" == "engine" ]]; then
     echo "${engine}"
 elif [[ "${1}" == "icon" ]]; then
     if [[ "${engine}" == "Bamboo" ]]; then

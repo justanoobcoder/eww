@@ -35,6 +35,12 @@ tooltip label {
     border-radius: 6px;
 }
 
+// Ibus
+.ibus_class {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
 // Internet
 .internet_class {
     margin-right: 10px;
@@ -170,6 +176,10 @@ scale trough {
   margin: 0px 10px 0px 0px;
 }
 
+// Volume
+.volume_class {
+    margin: 0px 5px 0px 10px;
+}
 .volbar trough highlight {
     background-image: linear-gradient(to right, #afcee0 30%, #a1bdce 50%, #77a5bf 100% *50);
     border-radius: 10px;
@@ -185,17 +195,17 @@ scale trough {
 
 // Workspaces
 .active {
-    color: $green;
+    color: $red;
     font-size: 1.4rem;
 }
 
 .inactive {
-    color: $black;
+    color: $gray;
     font-size: 1.4rem;
 }
 
 .inactive:hover {
-    color: $gray;
+    color: $cyan;
 }
 
 .workspace_class {
