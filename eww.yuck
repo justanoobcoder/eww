@@ -3,15 +3,14 @@
     (label :class "separ" :text "|")))
 
 ;; Ibus widget
-(defpoll IBUS_ENGINE :interval "1s" "./scripts/ibus engine")
-(defpoll IBUS_ICON :interval "1s" "./scripts/ibus icon")
+(defpoll IBUS_ENGINE :interval "3s" "ibus engine")
 (defwidget ibus []
   (box :class "ibus_class"
     (button
-      :tooltip "${IBUS_ENGINE}"
+      ;:tooltip "${IBUS_ENGINE}"
       :style "color: ${IBUS_ENGINE == "Bamboo" ? "#F7768E" : "#7AA2F7"};"
-      :onclick "./scripts/ibus"
-      IBUS_ICON
+      :onclick "./scripts/set-ibus-engine"
+      {IBUS_ENGINE == "Bamboo" ? "" : ""}
     )
   )
 )
