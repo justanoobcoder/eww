@@ -194,17 +194,17 @@ scale trough {
 }
 
 // Workspaces
-.active {
+.selected_tag {
     color: $red;
     font-size: 1.4rem;
 }
 
-.inactive {
+.occupied_tag {
     color: $gray;
     font-size: 1.4rem;
 }
 
-.inactive:hover {
+.occupied_tag:hover {
     color: $cyan;
 }
 
