@@ -1,0 +1,10 @@
+#!/bin/bash
+
+layout() {
+    ./scripts/dwm-dump-all | awk -v lines=2 '/layout/ {for(i=lines;i;--i)getline; print $0 }' | head -n 1 | awk -F ' ' '{print $2}'
+}
+
+layout
+tail -f /tmp/dwm.log | grep --line-buffered "layout_change_event" | while read -r; do 
+layout
+done
