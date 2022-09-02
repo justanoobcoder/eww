@@ -181,16 +181,18 @@
 )
 
 ;; Workspace widget
-(deflisten workspaces_listen :initial "" `./scripts/workspaces`)
-(defwidget workspaces []
-  (literal :content workspaces_listen))
+(deflisten tags_listen :initial "" `./scripts/dwm-tags`)
+(defwidget tags []
+  (literal :content tags_listen))
+(deflisten layout_listen :initial "" `./scripts/dwm-layout`)
 
 (defwidget left []
   (box
     :orientation "h" 
     :halign "start"
     :space-evenly false  
-    (workspaces)
+    (tags)
+    (label :text layout_listen)
   )
 )
 
