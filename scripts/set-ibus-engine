@@ -2,7 +2,7 @@
 
 # Dependency: https://github.com/phillbush/xmenu
 
-xmenu -p 1230x50 <<EOF | sh &
+xmenu -p 1260x50 <<EOF | sh &
 English		ibus engine xkb:us::eng; eww update IBUS_ENGINE=xkb:us::eng
 Bamboo 		ibus engine Bamboo; eww update IBUS_ENGINE=Bamboo
 EOF
