@@ -32,7 +32,7 @@ occupied_tags = occupied_tags[::-1]
 if selected_tag not in occupied_tags:
     bisect.insort(occupied_tags, selected_tag)
 
-box = '(box :class "workspace_class" :orientation "h" :spacing 5 :space-evenly "true" '
+box = '(box :class "tag_class" :orientation "h" :spacing 5 :space-evenly "true" '
 
 for i in occupied_tags:
     if i == selected_tag:

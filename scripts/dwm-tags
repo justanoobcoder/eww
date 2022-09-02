@@ -1,8 +1,8 @@
 #!/bin/sh
-workspaces() {
-    ./scripts/workspaces.py
+tags() {
+    ./scripts/dwm-tags.py
 }
-workspaces
+tags
 tail -f /tmp/dwm.log | grep --line-buffered "tag_change_event" | while read -r; do 
-workspaces
+tags
 done
