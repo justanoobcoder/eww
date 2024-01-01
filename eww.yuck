@@ -111,7 +111,7 @@
       :thickness 4
       (button :class "iconmem"
         :limit-width 2
-        :tooltip "RAM: ${round(EWW_RAM.used_mem / 1048576, 2)} GiB"
+        :tooltip "RAM: ${round(EWW_RAM.used_mem / 1048576000, 2)} GiB"
         :onclick "./scripts/pop system"
         :show_truncated false
         :wrap false
@@ -180,10 +180,10 @@
 )
 
 ;; Workspace widget
-(deflisten tags_listen :initial "" `./scripts/dwm-tags`)
+(deflisten tags_listen :initial "" `~/.config/eww/scripts/dwm-tags`)
 (defwidget tags []
   (literal :content tags_listen))
-(deflisten layout_listen :initial "" `./scripts/dwm-layout`)
+(deflisten layout_listen :initial "" `~/.config/eww/scripts/dwm-layout`)
 
 (defwidget left []
   (box

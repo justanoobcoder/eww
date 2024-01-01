@@ -16,9 +16,9 @@ tags = {
     }
 
 existed_tags = [1, 2, 4, 8, 16, 32, 64, 128, 256]
-selected_tag = int(subprocess.check_output("./scripts/dwm-dump-all | grep current | head -n 1 | awk -F' ' '{print $2}'", 
+selected_tag = int(subprocess.check_output("~/.config/eww/scripts/dwm-dump-all | grep current | head -n 1 | awk -F' ' '{print $2}'", 
                                 shell=True).decode('utf-8').rstrip('\n'))
-occupied_num = int(subprocess.check_output("./scripts/dwm-dump-all | grep occupied | head -n 1 | awk -F' ' '{print $2}'", shell=True).decode('utf-8').rstrip('\n'))
+occupied_num = int(subprocess.check_output("~/.config/eww/scripts/dwm-dump-all | grep occupied | head -n 1 | awk -F' ' '{print $2}'", shell=True).decode('utf-8').rstrip('\n'))
 occupied_tags = []
 
 index = len(existed_tags) - 1

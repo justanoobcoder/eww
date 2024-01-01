@@ -1,6 +1,6 @@
 #!/bin/sh
 tags() {
-    ./scripts/dwm-tags.py
+    ~/.config/eww/scripts/dwm-tags.py
 }
 tags
 tail -f /tmp/dwm.log | grep --line-buffered "tag_change_event" | while read -r; do 
