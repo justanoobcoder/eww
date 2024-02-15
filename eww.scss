@@ -14,7 +14,7 @@ $white: #f6ffe0;
 
 *{
     all: unset;
-    font-family: 'Comic Mono', 'Font Awesome 6 Pro';
+    font-family: 'Noto Sans CJK TC', 'Font Awesome 6 Pro';;
 }
 
 /** tooltip!! **/
@@ -49,15 +49,18 @@ tooltip label {
 
 // Clock
 .clock_class {
+    font-family: 'Comic Mono';
     margin: 5px 5px 0px;
 }
 
 .clock_time_class {
+    font-family: 'Comic Mono';
     color: $foreground;
     font-size: 23px;
 }
 
 .clock_date_class {
+    font-family: 'Comic Mono';
     margin: 5px 10px;
 }
 
@@ -85,20 +88,24 @@ calendar:selected {
 }
 
 calendar.header {
+    font-family: 'Comic Mono';
     color: $red;
     font-weight: bold;
 }
 
 calendar.button {
+    font-family: 'Comic Mono';
     color: $magenta;
 }
 
 calendar.highlight {
+    font-family: 'Comic Mono';
     color: $magenta;
     font-weight: bold;
 }
 
 calendar:indeterminate {
+    font-family: 'Comic Mono';
     color: $gray;
     font-weight: normal;
 }
@@ -196,12 +203,12 @@ scale trough {
 // Tags
 .selected_tag {
     color: $red;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
 }
 
 .occupied_tag {
     color: $gray;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
 }
 
 .occupied_tag:hover {
