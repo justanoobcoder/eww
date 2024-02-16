@@ -132,7 +132,7 @@
         ""))))
 
 ;; Volume widget
-(defpoll volume_percent :interval "2s" "amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll volume_percent :interval "2s" "amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
 (defpoll plug_status :interval "2s" "./scripts/plug_status")
 (defvar vol_reveal false)
 (defvar volume-muted false)
@@ -158,7 +158,7 @@
         :tooltip "${volume_percent}%"
         :max 100
         :min 0
-        :onchange "amixer -D pulse sset Master {}%" )))))
+        :onchange "amixer sset Master {}%" )))))
 
 (defwidget right []
   (box
